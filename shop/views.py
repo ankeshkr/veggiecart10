@@ -17,7 +17,7 @@ def searchMatch(query,item):
     # return True
     #else
 
-def search(request):
+ef search(request):
     query=request.GET.get('search')
     allProds=[]
     catprods = Product.objects.values('category', 'id')
@@ -34,8 +34,10 @@ def search(request):
         nSlides=n//4 + ceil(n/4 -(n//4))
         if len(prod)!=0:
             allProds.append([prod,range(1,nSlides), nSlides])
-    params={'allProds':allProds}
+    params={'allProds':allProds,'msg':''}
     #print(params)
+    if len(allProds)== 0 or len(query) < 4:
+        params = {'msg':'Please make sure to enter relevant search query'}
 
     return render(request,"shop/search.html",params)
   ##  return render(request,"shop/search.html")
