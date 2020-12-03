@@ -37,7 +37,7 @@ def search(request):
     params={'allProds':allProds}
     #print(params)
 
-    return render(request,"shop/index.html",params)
+    return render(request,"shop/search.html",params)
   ##  return render(request,"shop/search.html")
 def index(request):
    ## products=Product.objects.all()
